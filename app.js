@@ -1,3 +1,5 @@
+const path = require("path");
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -8,8 +10,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(userRoutes);
+
 app.get("/", (req, res, next) => {
-  res.send("<h1>HomePage</h1>");
+  res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
 app.listen(3200);
